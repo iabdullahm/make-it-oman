@@ -7,29 +7,32 @@ import {
   Grid,
   Card,
   CardContent,
-  CardActions,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import FactoryIcon from '@mui/icons-material/Factory';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import { useLanguage } from '../hooks/useLanguage';
+import { t } from '../i18n';
 
 export default function HomePage() {
+  const { language } = useLanguage();
+
   const features = [
     {
       icon: <FactoryIcon sx={{ fontSize: 48, color: '#1976d2' }} />,
-      title: 'Manufacturer Registry',
-      description: 'Connect with certified Omani manufacturers and suppliers.',
+      titleKey: 'home.manufacturerRegistry',
+      descriptionKey: 'home.manufacturerDesc',
     },
     {
       icon: <StorefrontIcon sx={{ fontSize: 48, color: '#f57c00' }} />,
-      title: 'Product Catalog',
-      description: 'Browse and discover a wide range of local products.',
+      titleKey: 'home.productCatalog',
+      descriptionKey: 'home.productDesc',
     },
     {
       icon: <TrendingUpIcon sx={{ fontSize: 48, color: '#4caf50' }} />,
-      title: 'Market Insights',
-      description: 'Access analytics and trends in Omani manufacturing.',
+      titleKey: 'home.marketInsights',
+      descriptionKey: 'home.insightsDesc',
     },
   ];
 
@@ -48,10 +51,10 @@ export default function HomePage() {
           }}
         >
           <Typography variant="h1" sx={{ color: '#1565c0', mb: 2 }}>
-            Welcome to Make it Oman
+            {t('home.title', language)}
           </Typography>
           <Typography variant="h5" sx={{ color: '#666', mb: 4 }}>
-            Supporting Omani Manufacturing & Entrepreneurship
+            {t('home.subtitle', language)}
           </Typography>
           <Button
             variant="contained"
@@ -60,7 +63,7 @@ export default function HomePage() {
             to="/manufacturers"
             sx={{ mr: 2, backgroundColor: '#1976d2' }}
           >
-            Explore Manufacturers
+            {t('home.exploreManufacturers', language)}
           </Button>
           <Button
             variant="outlined"
@@ -69,7 +72,7 @@ export default function HomePage() {
             to="/products"
             sx={{ borderColor: '#f57c00', color: '#f57c00' }}
           >
-            Browse Products
+            {t('home.browseProducts', language)}
           </Button>
         </Box>
 
@@ -93,10 +96,10 @@ export default function HomePage() {
                 <CardContent sx={{ flexGrow: 1, pt: 4 }}>
                   <Box sx={{ mb: 2 }}>{feature.icon}</Box>
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                    {feature.title}
+                    {t(feature.titleKey, language)}
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#666' }}>
-                    {feature.description}
+                    {t(feature.descriptionKey, language)}
                   </Typography>
                 </CardContent>
               </Card>
@@ -107,14 +110,14 @@ export default function HomePage() {
         {/* Call to Action */}
         <Box sx={{ textAlign: 'center', mt: 8, py: 6, backgroundColor: 'white', borderRadius: 2 }}>
           <Typography variant="h5" sx={{ mb: 3, color: '#333' }}>
-            Ready to grow your business?
+            {t('home.readyToGrow', language)}
           </Typography>
           <Button
             variant="contained"
             size="large"
             sx={{ backgroundColor: '#f57c00', padding: '12px 32px' }}
           >
-            Get Started
+            {t('home.getStarted', language)}
           </Button>
         </Box>
       </Container>

@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './store/index';
+import { LanguageProvider } from './hooks/useLanguage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </Provider>
   </React.StrictMode>
 );

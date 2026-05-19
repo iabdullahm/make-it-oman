@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import theme from './theme/theme';
+import { createOmanTheme } from './theme/rtlTheme';
+import { useLanguage } from './hooks/useLanguage';
 
 // Redux
 import { checkAuth } from './store/slices/authSlice';
@@ -22,8 +23,12 @@ import ProductDetailPage from './pages/Products/ProductDetail';
 import DashboardPage from './pages/Dashboard';
 import NotFoundPage from './pages/NotFound';
 
-function App() {
+function AppContent() {
   const dispatch = useDispatch();
+  const { language } = useLanguage();
+
+  // Create theme with dynamic direction based on language
+  const theme = createOmanTheme(language === 'ar' ? 'rtl' : 'ltr');
 
   useEffect(() => {
     dispatch(checkAuth());
@@ -48,6 +53,10 @@ function App() {
       </Router>
     </ThemeProvider>
   );
+}
+
+function App() {
+  return <AppContent />;
 }
 
 export default App;

@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "make-it-oman-frontend",
   "version": "1.0.0",
   "description": "Make it Oman - Frontend",
@@ -14,13 +14,17 @@
     "@mui/icons-material": "^5.14.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "recharts": "^2.10.0"
+    "recharts": "^2.10.0",
+    "react-toastify": "^9.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": ["react-app"]
   },
   "browserslist": {
     "production": [">0.2%", "not dead", "not op_mini all"],

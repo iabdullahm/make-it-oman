@@ -1,12 +1,7 @@
-﻿import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState: { isAuthenticated: false, user: null },
-  reducers: {
-    checkAuth: (state) => state,
-  },
-});
-
-export const { checkAuth } = authSlice.actions;
-export default authSlice.reducer;
+// Async thunks
+export const loginUser = createAsyncThunk('auth/loginUser', async (credentials, { rejectWithValue }) => {
+  try {
+    // Mock implementation - replace with actual API call
+    const { email, password } = credentia
