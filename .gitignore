@@ -1,1 +1,7 @@
+﻿node_modules/
+.env.local
+.env.production.local
+build/
+dist/
+.DS_Store
 .vercel
