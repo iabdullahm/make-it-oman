@@ -1,11 +1,11 @@
 ﻿{
-  "buildCommand": "cd frontend && npm install && npm run build",
-  "outputDirectory": "frontend/build",
-  "framework": "create-react-app",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+    "outputDirectory":  "frontend/build",
+    "buildCommand":  "cd frontend \u0026\u0026 npm install \u0026\u0026 npm run build",
+    "rewrites":  [
+                     {
+                         "destination":  "/index.html",
+                         "source":  "/(.*)"
+                     }
+                 ],
+    "framework":  "create-react-app"
 }
