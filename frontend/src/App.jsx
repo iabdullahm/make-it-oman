@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+﻿import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 // Redux
 import { checkAuth } from './store/slices/authSlice';
@@ -26,43 +24,27 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Check authentication on app load
     dispatch(checkAuth());
   }, [dispatch]);
 
   return (
     <Router>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-
       <Routes>
-        {/* Auth Routes */}
         <Route element={<AuthLayout />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
         </Route>
 
-        {/* Main Routes */}
         <Route element={<MainLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/manufacturers" element={<ManufacturersPage />} />
-          <Route path="/manufacturers/:id" element={<ManufacturerDetailPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/manufacturers' element={<ManufacturersPage />} />
+          <Route path='/manufacturers/:id' element={<ManufacturerDetailPage />} />
+          <Route path='/products' element={<ProductsPage />} />
+          <Route path='/products/:id' element={<ProductDetailPage />} />
+          <Route path='/dashboard' element={<DashboardPage />} />
         </Route>
 
-        {/* 404 */}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
