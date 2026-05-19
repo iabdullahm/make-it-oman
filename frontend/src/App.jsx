@@ -1,13 +1,15 @@
 ﻿import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme/theme';
 
 // Redux
 import { checkAuth } from './store/slices/authSlice';
 
-// Layouts
-import MainLayout from './components/Layout/MainLayout';
-import AuthLayout from './components/Layout/AuthLayout';
+// Components
+import Navigation from './components/Navigation/Navigation';
 
 // Pages
 import HomePage from './pages/Home';
@@ -28,25 +30,23 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
-      <Routes>
-        <Route element={<AuthLayout />}>
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-        </Route>
-
-        <Route element={<MainLayout />}>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/manufacturers' element={<ManufacturersPage />} />
-          <Route path='/manufacturers/:id' element={<ManufacturerDetailPage />} />
-          <Route path='/products' element={<ProductsPage />} />
-          <Route path='/products/:id' element={<ProductDetailPage />} />
-          <Route path='/dashboard' element={<DashboardPage />} />
-        </Route>
-
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/manufacturers" element={<ManufacturersPage />} />
+          <Route path="/manufacturers/:id" element={<ManufacturerDetailPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetailPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
